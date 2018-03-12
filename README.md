@@ -1,3 +1,80 @@
+This is an app to create your smurf avatar. 
+The user can create an account to save his avatar and share it with others. 
+The user can only update our delete his own avatar. 
+An avatar has_many users.
+A user has_one avatar.
+
+With the correct image rights this application could be added to a bigger website having for theme the smurfs or their author, Peyo. 
+
+database:
+
+avatars
+- gender: male, female
+- eyes: blue, green, brown, black
+- hair: blond, pink, purple, brown
+- accessory: none, feather, paint, pencil
+
+users
+- username
+- email
+- password_digest
+- avatar_id
+
+relationship:
+- an avatar has_many :users
+- a user has_one :avatar
+
+
+possible avatars:
+
+	females:
+
+    -blue eyes / blond hair
+    -blue eyes / pink hair
+    -blue eyes / purple hair
+    -blue eyes / brown hair
+
+    -green eyes / blond hair
+    -green eyes / pink hair
+    -green eyes / purple hair
+    -green eyes / brown hair
+
+    -brown eyes / blond hair
+    -brown eyes / pink hair
+    -brown eyes / purple hair
+    -brown eyes / brown hair
+
+    -black eyes / blond hair
+    -black eyes / pink hair
+    -black eyes / purple hair
+    -black eyes / brown hair
+
+    male:
+
+    -blue eyes / no accessory
+    -blue eyes / feather
+    -blue eyes / paint
+    -blue eyes / pencil
+
+    -green eyes / no accessory
+    -green eyes / feather
+    -green eyes / paint
+    -green eyes / pencil
+
+    -brown eyes / no accessory
+    -brown eyes / feather
+    -brown eyes / paint
+    -brown eyes / pencil
+
+    -black eyes / no accessory
+    -black eyes / feather
+    -black eyes / paint
+    -black eyes / pencil
+
+
+
+-------------------------------------------------------------------------------------------------------------
+
 # Sinatra Content Management System App
 
 ## Overview
