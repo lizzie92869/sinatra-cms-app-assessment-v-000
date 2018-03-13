@@ -4,7 +4,8 @@ class CreateUsers < ActiveRecord::Migration
   		 t.string :username
   		 t.string :email
   		 t.string :password_digest
-  		 t.integer :avatar_id
+  		 t.integer :female_avatar_id
+  		 t.integer :male_avatar_id
   	end
   end
 end

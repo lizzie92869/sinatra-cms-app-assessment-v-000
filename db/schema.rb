@@ -11,12 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180312223747) do
+ActiveRecord::Schema.define(version: 20180313050747) do
 
-  create_table "avatars", force: :cascade do |t|
-    t.string "gender"
+  create_table "female_avatars", force: :cascade do |t|
     t.string "eyes"
     t.string "hair"
+  end
+
+  create_table "male_avatars", force: :cascade do |t|
+    t.string "eyes"
     t.string "accessory"
   end
 
@@ -24,7 +27,8 @@ ActiveRecord::Schema.define(version: 20180312223747) do
     t.string  "username"
     t.string  "email"
     t.string  "password_digest"
-    t.integer "avatar_id"
+    t.integer "female_avatar_id"
+    t.integer "male_avatar_id"
   end
 
 end
