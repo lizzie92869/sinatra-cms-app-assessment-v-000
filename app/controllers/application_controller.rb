@@ -16,6 +16,12 @@ class ApplicationController < Sinatra::Base
   	erb :index
   end 
 
+  get "/avatars" do
+    @avatars = []
+    @avatars << MaleAvatar.all 
+    @avatars << FemaleAvatar.all
+    erb :"avatars"
+  end
 
 
 # get "/signin": display the form to sign in

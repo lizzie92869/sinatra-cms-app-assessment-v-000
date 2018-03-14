@@ -5,6 +5,7 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 use Rack::MethodOverride
-use AvatarsController
+use MaleAvatarsController
+use FemaleAvatarsController
 use UsersController
 run ApplicationController

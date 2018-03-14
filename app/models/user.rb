@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
-	has_one :avatar
+	belongs_to :female_avatar
+	belongs_to :male_avatar
 	has_secure_password
 end
