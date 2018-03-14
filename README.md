@@ -36,8 +36,8 @@ routes job:
 
 application_controller:
 get "/" : display the index, asking to create a smurf or a smurfette
-get "/signin": display the form to sign in
-post "/signin": check the password is the one associated with the email
+get "/login": display the form to sign in
+post "/login": check the password is the one associated with the email
 post "/logout": delete the session hash
 
 get "/avatars": display all the avatars

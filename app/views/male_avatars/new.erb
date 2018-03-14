@@ -1,9 +1,14 @@
 create a smurf
 <p><%=@file_name%></p>
-<img src="/images/<%=@file_name%>">
+
+<object data="/images/<%=@file_name%>">
+    <img src="/images/black_none.png" />
+</object>
+
+
 <form action="/male_avatars" method="post">
 
-<!-- hash male = {male: {eyes: "blue", accessory: "none"} -->
+<!-- hash params {eyes: "blue", accessory: "none"} -->
 <label for="eyes">Eyes</label>
 <select id="eyes" name="eyes">
   <option value="blue" >blue eyes</option>
@@ -20,9 +25,8 @@ create a smurf
   <option value="none">none</option>
 </select>
 
-<input type="submit" value="Try it">
-<!-- stylesheet_link_tag("application")
-# => <link href="/assets/application.css?body=1" media="screen" rel="stylesheet" /> -->
+<input class="button" type="submit" value="Try it">
+
 </form>
 
 
@@ -32,7 +36,7 @@ create a smurf
 <input type="hidden" name="accessory" value="<%=@accessory%>">
 <input type="hidden" name="male_avatar_name" value="<%=@file_name%>">
 
-<input type="submit" value="Save this avatar">
+<input class="button" type="submit" value="Save this avatar">
 
 </form>
 

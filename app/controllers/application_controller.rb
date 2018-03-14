@@ -1,6 +1,7 @@
 require './config/environment'
 
 class ApplicationController < Sinatra::Base
+  # register::ActiveRecordExtension
 
   configure do
     set :public_folder, 'public'
@@ -23,10 +24,37 @@ class ApplicationController < Sinatra::Base
     erb :"avatars"
   end
 
+  get "/login" do
+    erb :"/login"
+  end
 
-# get "/signin": display the form to sign in
-# post "/signin": check the password is the one associated with the email
+  post "/login" do
+    @user = User.find_by(params[:email])
+    if @user && @user.authenticate(params[:user])
+      erb :"/users/show"
+    else
+     redirect to("/login")
+     # flash[:message]="Sorry we couldn't find your account"
+    end
+  end
+
+
+
+# get "/login": display the form to sign in
+# post "/login": check the password is the one associated with the email
 # post "/logout": delete the session hash
+# --------helper methods---------
+  def logged_in?
+      !!session[:user_id]
+    end
+
+    def current_user
+      @current_user ||= User.find_by(id: session[:user_id])
+    end
 
 
 end
+
+
+
+
