@@ -1,0 +1,18 @@
+body{
+	background-image: url("/images/background.jpg");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	color: blue;
+	font-style: arial;
+	font-size: 30px;
+	
+	}
+
+.navbar {
+	size: 100%;
+}
+
+.bigquestion {
+	color: white;
+	font-size: 30px;
+}

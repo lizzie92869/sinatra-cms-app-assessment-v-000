@@ -25,12 +25,14 @@ end
 
 # get "/users/:id": display the user profile
 get "/users/:id" do
-	# if current_user.male_avatar || current_user.female_avatar
+	# if current_user.male_avatar || current_user.female_avatar   #HELP
 
 	@file_name = User.find(params[:id]).male_avatar.male_avatar_name || User.find(params[:id]).female_avatar.female_avatar_name  
 	# end
 	erb :"/users/show"
 end
+
+
 
 
 

@@ -1,1 +1,15 @@
-login.erb
+login
+
+<form action="/login" method="post">
+	<label for="username">Username:</label>
+	<input type="text" name="user[username]" id="username" value="username">
+
+	<label for="email">Email:</label>
+	<input type="email" name="user[email]" id="email" value="email">
+
+	<label for="password">Password:</label>
+	<input type="password" name="user[password]" id="password" value="password">
+
+	<input type="submit" name="Log in">
+
+</form>

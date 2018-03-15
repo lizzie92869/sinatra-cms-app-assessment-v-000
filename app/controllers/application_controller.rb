@@ -25,16 +25,20 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/login" do
+    if logged_in?
+      erb :"/users/show"                                               # HELP
+    else
     erb :"/login"
+    end
   end
 
   post "/login" do
-    @user = User.find_by(params[:email])
+    @user = User.find_by(params[:user][:email])
     if @user && @user.authenticate(params[:user])
-      erb :"/users/show"
+      erb :"/users/show"                                               # HELP
     else
      redirect to("/login")
-     # flash[:message]="Sorry we couldn't find your account"
+     # flash[:message]="Sorry we couldn't find your account"           # HELP
     end
   end
 
