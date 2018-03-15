@@ -17,12 +17,12 @@ end
 
 post "/save_avatar" do
 	if logged_in?
-		# @male_avatar = MaleAvatar.create(params)
-		@male_avatar = MaleAvatar.find_by(params)
-		# @user = User.find[params[:id]]
+		@male_avatar = MaleAvatar.find_by(male_avatar_name: params[:male_avatar_name])
 		@user = current_user
 		@user.male_avatar = @male_avatar
+		@user.male_avatar_id = @male_avatar.id
 		@user.save
+		# binding.pry
 		redirect to("/users/#{@user.id}")
 	else
 		redirect to("/login")
