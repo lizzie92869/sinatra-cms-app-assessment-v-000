@@ -1,13 +1,22 @@
 
 display the form
 
+<% if @user.male_avatar_id %>
+<p>your profile picture:</p>
+<img src="/images/<%=@file_name%>">
+<p><a href="/male_avatars/new">Change your avatar</a></p>
+<p><a href="/users/<%=@user.id%>/edit">change your information</a><p>
+
+<form method = "POST" action = "/users/<%=@user.id%>/delete">
+<input id="hidden" type="hidden" name="_method" value="delete">
+  <input type = "submit" name = "submit" value = "Logout">
+</form>
+
+<%else%>
 <p class="title">A smurf</p>
  <a href="/male_avatars/new"><img src="/images/male.png" alt="a smurf"></a>
-
 
 <p class="title">A smurfette</p>
 <a href="female_avatars/new"><img src="/images/female.png" alt="a smurfette"></a>  
 
-or the profile picture
-
-<img src="/images/<%=@file_name%>">
+<%end%>

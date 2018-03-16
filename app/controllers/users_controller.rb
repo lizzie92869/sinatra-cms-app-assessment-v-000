@@ -25,7 +25,6 @@ end
 
 # get "/users/:id": display the user profile
 get "/users/:id" do
-	binding.pry
 	@user = User.find(params[:id])
 	if @user.male_avatar
 		@file_name = @user.male_avatar.male_avatar_name
@@ -33,11 +32,27 @@ get "/users/:id" do
 	erb :"/users/show"
 end
 
-
-
-
-
 # get "/users/:id/edit": display the form to change the user informations
-# post "/users/:id": update the user information
-# delete "/users/:id/delete": delete the user
+get "/users/:id/edit" do
+	@user = User.find(params[:id])
+	erb :"/users/edit"
 end
+
+# post "/users/:id": update the user information
+patch "/users/:id" do
+	@user = User.find(params[:id])
+	@user.update(username: params[:user][:username], email: params[:user][:email], password: params[:user][:password])
+	binding.pry
+	redirect to("/users/#{@user.id}")
+end
+
+#delete "/users/:id/delete": delete the user
+delete "/users/:id/delete" do
+  if logged_in?
+        session.clear
+    end
+  redirect to("/")
+end
+end
+
+

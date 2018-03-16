@@ -1,1 +1,21 @@
-edit.erb
+
+<div class="sign_form">
+
+<h1>Your information:</h1>
+<br>
+	<div class="form_text">
+	<form action="/users/<%=@user.id%>" method="post">
+	  <input id="hidden" type="hidden" name="_method" value="patch">
+		<label for="username">Username:</label>
+		<input type="text" name="user[username]" id="username" value="<%=@user.username%>">
+
+		<label for="email">Email:</label>
+		<input type="email" name="user[email]" id="email" value="<%=@user.email%>">
+
+		<label for="password">Reset password:</label>
+		<input type="password" name="user[password]" id="password">
+
+		<input type="submit" name="Update your account">
+	</form>
+	</div>
+</div>

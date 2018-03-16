@@ -17,21 +17,16 @@ class ApplicationController < Sinatra::Base
   	erb :index
   end 
 
-  get "/avatars" do
-    @avatars = []
-    @avatars << MaleAvatar.all 
-    @avatars << FemaleAvatar.all
-    erb :"avatars"
-  end
-
+# get "/login": display the form to sign in
   get "/login" do
     if logged_in?
       erb :"/users/show"                                               # HELP :id for the user
     else
-    erb :"/login"                                                      # prefill the field, need a @user?
+      erb :"/login"                                                      # prefill the field, need a @user?
     end
   end
 
+# post "/login": check the password is the one associated with the email
   post "/login" do
     @user = User.find_by(email: params[:user][:email])
     if @user && @user.authenticate(params[:user][:password])
@@ -44,11 +39,11 @@ class ApplicationController < Sinatra::Base
   end
 
 
+#post "/logout": delete the session hash
 
-# get "/login": display the form to sign in
-# post "/login": check the password is the one associated with the email
-# post "/logout": delete the session hash
+
 # --------helper methods---------
+
   def logged_in?
       !!session[:user_id]
     end
