@@ -1,4 +1,4 @@
-
+<body class="background">
 <div class="sign_form">
 
 <h1>Your information:</h1>
@@ -8,14 +8,20 @@
 	  <input id="hidden" type="hidden" name="_method" value="patch">
 		<label for="username">Username:</label>
 		<input type="text" name="user[username]" id="username" value="<%=@user.username%>">
-
+		<br><br>
 		<label for="email">Email:</label>
 		<input type="email" name="user[email]" id="email" value="<%=@user.email%>">
-
+		<br><br>
 		<label for="password">Reset password:</label>
 		<input type="password" name="user[password]" id="password">
-
+		<br><br>
 		<input type="submit" name="Update your account">
+	</form>
+	<br><br><br>
+	<form action="/users/<%=@user.id%>/delete" method="post">
+		<input id="hidden" type="hidden" name="_method" value="delete">
+		<input type="submit" name="submit" value="or delete your account permanently" id="delete_account">
 	</form>
 	</div>
 </div>
+</body>

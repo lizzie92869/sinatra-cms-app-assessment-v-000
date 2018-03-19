@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
 	validates_presence_of :username
 	validates_presence_of :password
 	validates_presence_of :email
+	validates :email, uniqueness: { case_sensitive: false }
 end

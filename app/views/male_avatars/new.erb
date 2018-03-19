@@ -1,42 +1,52 @@
-create a smurf
-<p><%=@file_name%></p>
-
-<object data="/images/<%=@file_name%>">
-    <img src="/images/black_none.png" />
-</object>
+<body class="background">
+<h1 id="create_a_smurf">create a smurf</h1>
+<!-- <p><%=@file_name%></p> -->
 
 
-<form action="/male_avatars" method="post">
+<div class="div_avatar_display2">
+	<object data="/images/<%=@file_name%>" class="resize_pic">
+	<img src="/images/black_none.png" class="resize_pic"/>
+	</object>
 
-<!-- hash params {eyes: "blue", accessory: "none"} -->
-<label for="eyes">Eyes</label>
-<select id="eyes" name="eyes">
-  <option value="blue" >blue eyes</option>
-  <option value="brown">brown</option>
-  <option value="black">black</option>
-  <option value="green">green</option>
-</select>
+		<div id="form_create_avatar">
+			<form action="/male_avatars" method="post">
+			<!-- hash params {eyes: "blue", accessory: "none"} -->
+			<div class="center">
+			<label class="custom_button" for="eyes">Eyes</label>
+			<select class="custom_button" id="eyes" name="eyes">
+			<option value="blue" >blue</option>
+			<option value="brown">brown</option>
+			<option value="black">black</option>
+			<option value="green">green</option>
+			</select>
 
-<label for="accessory">Accessory</label>
-<select id="accessory" name="accessory">
-  <option value="paint" >paint</option>
-  <option value="pencil">pencil</option>
-  <option value="feather">feather</option>
-  <option value="none">none</option>
-</select>
+			<label class="custom_button" for="accessory">Accessory</label>
+			<select class="custom_button" id="accessory" name="accessory">
+			<option value="paint" >paint</option>
+			<option value="pencil">pencil</option>
+			<option value="feather">feather</option>
+			<option value="none">none</option>
+			</select>
+		</div>
+</div>
+<br>
+<div class="div_try_it">
+		<input id="try_it" type="submit" value="Try it">
+		</form>
 
-<input class="button" type="submit" value="Try it">
+		
 
-</form>
+		<% if @file_name %>
+		<div id="save_button">
+		<form action="/save_avatar" method="post">
+		<input type="hidden" name="eyes" value="<%=@eyes%>">
+		<input type="hidden" name="accessory" value="<%=@accessory%>">
+		<input type="hidden" name="male_avatar_name" value="<%=@file_name%>">
+		<input class="button" type="submit" value="Save">
+		</form>
+		</div>
+</div>
+</div>
+<%end%>
 
-
-<form action="/save_avatar" method="post">
-
-<input type="hidden" name="eyes" value="<%=@eyes%>">
-<input type="hidden" name="accessory" value="<%=@accessory%>">
-<input type="hidden" name="male_avatar_name" value="<%=@file_name%>">
-
-<input class="button" type="submit" value="Save this avatar">
-
-</form>
-
+</body>

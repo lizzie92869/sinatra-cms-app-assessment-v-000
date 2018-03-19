@@ -1,28 +1,32 @@
 require './config/environment'
 
 class ApplicationController < Sinatra::Base
-  # register::ActiveRecordExtension
 
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
-
     enable :sessions
+    register Sinatra::Flash
   	set :session_secret, "secret"
   end
 
-
   #display the index, asking to create a smurf or a smurfette
   get "/" do 
+    @alert_message = session[:alert_message]
+    session[:alert_message] = nil
   	erb :index
   end 
 
 # get "/login": display the form to sign in
   get "/login" do
+    @success_message = session[:success_message]
+    session[:success_message] = nil
+    @alert_message = session[:alert_message]
+    session[:alert_message] = nil
     if logged_in?
-      erb :"/users/show"                                               # HELP :id for the user
+      redirect to("/users/#{current_user.id}")                                               
     else
-      erb :"/login"                                                      # prefill the field, need a @user?
+      erb :"/login"                                                      
     end
   end
 
@@ -31,16 +35,42 @@ class ApplicationController < Sinatra::Base
     @user = User.find_by(email: params[:user][:email])
     if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
-      redirect to("/users/#{@user.id}")                                               # HELP
+      session[:success_message] = "Successful connection to your account."
+      redirect to("/users/#{@user.id}")                                               
     else
+      session[:alert_message] = "Unsuccessful connection to your account."
      redirect to("/login")
-     # flash[:message]="Sorry we couldn't find your account"           # HELP
     end
   end
 
+# post "/save_avatar": save the corresponding avatar id (male ou female) in the row of male_avatar or female_avatar table
+post "/save_avatar" do
+  if logged_in?
+    if @male_avatar = MaleAvatar.find_by(male_avatar_name: params[:male_avatar_name])
+      @user = current_user
+      @user.update_attribute(:male_avatar_id, @male_avatar.id)
+      redirect to("/users/#{@user.id}")
+    end
+    if @female_avatar = FemaleAvatar.find_by(female_avatar_name: params[:female_avatar_name])
+      @user = current_user
+      @user.update_attribute(:female_avatar_id, @female_avatar.id)
+      redirect to("/users/#{@user.id}")
+    end
+  else
+    session[:alert_message] = "Sorry, you must be logged in to save your avatar."
+    redirect to("/login")
+  end
+end
+
 
 #post "/logout": delete the session hash
-
+delete "/logout" do
+  if logged_in?
+        session.clear
+        session[:success_message] = "Successful disconnection from your account."
+    end
+  redirect to("/")
+end
 
 # --------helper methods---------
 

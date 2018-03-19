@@ -1,17 +1,33 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
+  <meta charset="utf-8">
     <title>Smurf Avatar Generator</title>
-   <link rel="stylesheet" type="text/css" href="style.css">
-  </head>
-  <body link="#C0C0C0" vlink="#1AC5FB" alink="#1AC5FB">
 
-    <div class="container">
-     
-      
-      <%= yield %>
-     
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+   <link href="<%= url('/style.css') %>" rel="stylesheet" type="text/css" />
+   <link href="https://fonts.googleapis.com/css?family=Covered+By+Your+Grace" rel="stylesheet">
+  </head>
+  <body link="#333333" vlink="#333333" alink="#1AC5FB">
+  
+  <% if @success_message %>
+    <div style="background-color: #8AC221; height: 40px;font-size: 1em; font-family: arial; text-align: center; color: white; display: table-cell; vertical-align: middle; opacity: 0.8; width: 1280px">
+    <%= @success_message %>
     </div>
+  <% end %>
+
+  <% if @alert_message %>
+    <div style="background-color: #FF3D21; height:40px; font-size: 1em; font-family: arial; text-align: center; color: white; display: table-cell; vertical-align: middle; opacity: 0.8; width: 1280px">
+    <%= @alert_message %>
+    </div>
+  <% end %>
+
+
+      <%= yield %>
 
   </body>
 </html>

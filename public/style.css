@@ -1,11 +1,10 @@
 html { font-size: 62.5%; }
 
 body{
-	background-image: url("/images/background.png");
+	background-image: url("/images/background.jpg");
 	background-size: 100%;
-	font-style: arial;	
 	background-repeat: no-repeat;
-	
+	font-family: 'Covered By Your Grace', cursive;
 	font-size: 0.8em;}
 
 @media (max-width: 300px) {
@@ -22,7 +21,42 @@ body{
 
 @media (min-width: 1200px) {
     html { font-size: 100%; }
-	}
+}
+
+.navbar {
+	height: 50px;
+	width: 250px;
+	padding: 10px;
+	font-size: 2em;
+	background-color: #FAEE19;
+	border-style: solid;
+	border-width: thin;
+	border-color: black;
+	margin-top: 1%;
+	margin-left: 1%;
+}
+
+.navbar_logout {
+	color: #333333;
+	font-size: 2em;
+	margin-left: 3%;
+    margin-top: 3%;
+}
+
+#logout_button {                     
+     background: none;
+     color: inherit;
+     border: none; 
+     padding: 0;
+     font-size: 2em;
+     color: black;
+     margin-left: 3%;
+}
+#logout_button:hover{
+	color: red;
+	text-decoration: underline;
+}
+
 p{
 	color: white;
 }
@@ -47,18 +81,146 @@ p{
 	max-height:100%;
 }
 
-.container.sign_form{
+.sign_form{
 	background-color: white;
-	text-align: center ;
-	width: 450px ;
-  	margin-left: auto ;
-  	margin-right: auto ;
-  	margin-top: 20%;
-  	padding: 40px;
+	opacity: 0.9;
+	text-align: center;
+	width: 300px;
+  	margin-left: auto;
+  	margin-right: auto;
+  	margin-top: 10%;
+  	padding: 20px;
 }
 
 .form_text{
 	font-size: 1.5em;
 	text-align: left ;
 }
+
+h1{
+	color: #333333;
+	text-align: center;
+}
+
+div.div_avatar_display{
+	background-color: white;
+	position: absolute;
+    height: 300px;
+    width: 400px;
+    margin: -100px 0 0 -200px;
+    top: 30%;
+    left: 50%;
+    padding: 2%;
+    border-style: solid;
+    border-color: black;
+
+}
+
+.pic_gender {
+	height: 200px;
+  	margin-left: 8%;
+
+
+
+}
+
+div.div_avatar_display2 {
+	background-color: white;
+	position: absolute;
+    height: 400px;
+    width: 400px;
+    margin: -200px 0 0 -200px;
+    top: 50%;
+    left: 50%;
+    padding: 2%;
+    border-style: solid;
+    border-color: black;
+
+}
+
+.background {
+	background-image: url("/images/bd_bkg.png");
+}
+
+img.avatar_display{
+	height: 150px;
+	margin-right: 7%;
+	margin-left: 7%;
+	margin-top: 3%;
+}
+
+
+.question {
+	margin-top: 1%;
+	text-align: center;
+	color: black;
+	font-size: 1em;
+
+}
+
+.resize_pic {
+	height: 300px;
+	margin-right: 10%;
+	margin-left: 10%;
+}
+
+#create_a_smurf {
+	margin-top: 5%;
+}
+
+#form_create_avatar {
+	margin-top: 10%;
+	margin-right: 10%;
+	margin-left: 10%;3
+}
+
+
+
+#div_profile_pic {
+	width: 70%;
+	padding: 2%;
+	background-color: white;
+	border-style: solid;
+	border-color: black;
+	margin-top: 10%;
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#delete_account {
+	color: red;
+}
+
+.custom_button {
+	font-size: 1em;
+}
+
+.div_try_it {
+	width: 300px;
+	text-align: center;
+	margin-top: 7%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#try_it{
+	font-size: 3em;
+	color: #1AC5FB;
+	
+
+}
+
+#save_button {
+	/*margin: 0 auto;
+	margin-top: 30px;
+	text-align: center;*/
+	font-size: 3em;
+	
+	color: #8AC221;
+
+}
+
+.center{
+	text-align: center;
 }

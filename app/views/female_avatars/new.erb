@@ -1,1 +1,52 @@
-create a smurfette
+<body class="background">
+<h1 id="create_a_smurf">create a smurfette</h1>
+<!-- <p><%=@file_name%></p> -->
+
+
+<div class="div_avatar_display2">
+	<object data="/images/<%=@file_name%>" class="resize_pic">
+	<img src="/images/black_blond.png" class="resize_pic"/>
+	</object>
+
+		<div id="form_create_avatar">
+			<form action="/female_avatars" method="post">
+			<!-- hash params {eyes: "blue", hair: "blond"} -->
+			<div class="center">
+			<label class="custom_button" for="eyes">Eyes</label>
+			<select class="custom_button" id="eyes" name="eyes">
+			<option value="blue" >blue</option>
+			<option value="brown">brown</option>
+			<option value="black">black</option>
+			<option value="green">green</option>
+			</select>
+
+			<label class="custom_button" for="hair">Hair</label>
+			<select class="custom_button" id="hair" name="hair">
+			<option value="pink" >pink</option>
+			<option value="brown">brown</option>
+			<option value="purple">purple</option>
+			<option value="blond">blond</option>
+			</select>
+		</div>
+</div>
+<br>
+<div class="div_try_it">
+		<input id="try_it" type="submit" value="Try it">
+		</form>
+
+		
+
+		<% if @file_name %>
+		<div id="save_button">
+		<form action="/save_avatar" method="post">
+		<input type="hidden" name="eyes" value="<%=@eyes%>">
+		<input type="hidden" name="hair" value="<%=@hair%>">
+		<input type="hidden" name="female_avatar_name" value="<%=@file_name%>">
+		<input class="button" type="submit" value="Save">
+		</form>
+		</div>
+</div>
+</div>
+<%end%>
+
+</body>

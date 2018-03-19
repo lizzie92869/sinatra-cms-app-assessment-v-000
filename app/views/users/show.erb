@@ -1,22 +1,46 @@
 
-display the form
+<body class="background">
+<div>
+	<a href="/" class="navbar_logout">Home</a>
+	<form method = "POST" action = "/logout">
+	<input id="hidden" type="hidden" name="_method" value="delete">
+	  <input type = "submit" name = "submit" value = "Logout" id="logout_button">
+	</form>
+</div>
+
+<!-- if an avatar is already created, display the profile picture-->
 
 <% if @user.male_avatar_id %>
-<p>your profile picture:</p>
-<img src="/images/<%=@file_name%>">
-<p><a href="/male_avatars/new">Change your avatar</a></p>
-<p><a href="/users/<%=@user.id%>/edit">change your information</a><p>
+<h1>Welcome to your profile page smurf <%=@user.username.capitalize%>!</h1>
 
-<form method = "POST" action = "/users/<%=@user.id%>/delete">
-<input id="hidden" type="hidden" name="_method" value="delete">
-  <input type = "submit" name = "submit" value = "Logout">
-</form>
+<div id="div_profile_pic">
+<img src="/images/<%=@file_name%>" class="resize_pic">
+<h2><a href="/male_avatars/new">Change your avatar</a></h2>
+<h3><a href="/users/<%=@user.id%>/edit">change your information</a><h3>
+</div>
 
-<%else%>
-<p class="title">A smurf</p>
- <a href="/male_avatars/new"><img src="/images/male.png" alt="a smurf"></a>
+<% elsif @user.female_avatar_id%>
+<h1>Welcome to your profile page smurfette <%=@user.username.capitalize%>!</h1>
+<div id="div_profile_pic">
+<img src="/images/<%=@file_name%>" class="resize_pic">
+<h2><a href="/female_avatars/new">Change your avatar</a></h2>
+<h3><a href="/users/<%=@user.id%>/edit">change your information</a><h3>
+</div>
 
-<p class="title">A smurfette</p>
-<a href="female_avatars/new"><img src="/images/female.png" alt="a smurfette"></a>  
+
+<% else %>
+
+
+<!-- if the avatar is not created yet, prompt the user to choose the gender of their avatar-->
+
+<div class="div_avatar_display">
+<div class="question">Would you like to create a smurf or a smurfette?</div>
+
+ <a href="/male_avatars/new"><img src="/images/smurf.png" alt="a smurf" class="pic_gender"></a>
+
+<a href="/female_avatars/new"><img src="/images/smurfette.png" alt="a smurfette" class="pic_gender"></a>  
+</div>
+
 
 <%end%>
+</body>
