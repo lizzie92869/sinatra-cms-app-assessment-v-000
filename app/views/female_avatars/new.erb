@@ -2,7 +2,7 @@
 <h1 id="create_a_smurf">create a smurfette</h1>
 <!-- <p><%=@file_name%></p> -->
 
-
+<!-- form to create a smurfette -->
 <div class="div_avatar_display2">
 	<object data="/images/<%=@file_name%>" class="resize_pic">
 	<img src="/images/black_blond.png" class="resize_pic"/>
@@ -35,7 +35,7 @@
 		</form>
 
 		
-
+<!-- the save button must be hidden the first time around, to have a post method to /female_avatars storing the name of the file avatar, once we have @file_name we can save it -->
 		<% if @file_name %>
 		<div id="save_button">
 		<form action="/save_avatar" method="post">

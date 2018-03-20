@@ -12,17 +12,13 @@ class ApplicationController < Sinatra::Base
 
   #display the index, asking to create a smurf or a smurfette
   get "/" do 
-    @alert_message = session[:alert_message]
-    session[:alert_message] = nil
+    pass_and_remove_messages
   	erb :index
   end 
 
 # get "/login": display the form to sign in
   get "/login" do
-    @success_message = session[:success_message]
-    session[:success_message] = nil
-    @alert_message = session[:alert_message]
-    session[:alert_message] = nil
+    pass_and_remove_messages
     if logged_in?
       redirect to("/users/#{current_user.id}")                                               
     else
@@ -73,17 +69,29 @@ delete "/logout" do
 end
 
 # --------helper methods---------
+private
 
   def logged_in?
       !!session[:user_id]
-    end
+  end
 
-    def current_user
+  def current_user
       @current_user ||= User.find_by(id: session[:user_id])
-    end
+  end
 
-  def right_user?
-    logged_in? && current_user.id.to_s === params[:id]
+  def redirect_wrong_user
+    # @user = User.find(params[:id])
+    if !logged_in? || !(current_user.id.to_s === params[:id])
+    session[:alert_message] = "You must be logged in to see this page"
+    redirect to("/")
+    end
+  end
+
+  def pass_and_remove_messages
+    @success_message = session[:success_message]
+    session[:success_message] = nil
+    @alert_message = session[:alert_message]
+    session[:alert_message] = nil
   end
 
 end

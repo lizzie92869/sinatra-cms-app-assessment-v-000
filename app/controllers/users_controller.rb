@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-before_action :right_user, only: [:show, :edit, :update, :delete]
 
 # get "/users/new": display signup form
 get "/users/new" do
@@ -27,66 +26,46 @@ post "/users" do
 	end
 end
 
-
 # get "/users/:id": display the user profile
 get "/users/:id" do
 	@user = User.find(params[:id])
-	# if right_user?
+	redirect_wrong_user
 		if @user.male_avatar
 			@file_name = @user.male_avatar.male_avatar_name
 		end
 		if @user.female_avatar
 			@file_name = @user.female_avatar.female_avatar_name
 		end
-		@alert_message = session[:alert_message]
-	    session[:alert_message] = nil
-		@success_message = session[:success_message]
-	    session[:success_message] = nil
+		pass_and_remove_messages
 		erb :"/users/show"
-	else
-		session[:alert_message] = "You must be logged in to access this profile page"
-		redirect to("/")
-	end
 end
 
 # get "/users/:id/edit": display the form to change the user informations
 get "/users/:id/edit" do
 	@user = User.find(params[:id])
-	if right_user?
-		erb :"/users/edit"
-	else 
-		session[:alert_message] = "You must be logged in to modify your information"
-		redirect to("/")
-	end
+	redirect_wrong_user
+	erb :"/users/edit"
 end
 
 # post "/users/:id": update the user information
 patch "/users/:id" do
+	redirect_wrong_user
 	@user = User.find(params[:id])
-	if right_user?
 		if @user.update(username: params[:user][:username], email: params[:user][:email], password: params[:user][:password])
-		session[:success_message]="Your account has been successfuy updated"
-		redirect to("/users/#{@user.id}")
+			session[:success_message]="Your account has been successfuy updated"
+			redirect to("/users/#{@user.id}")
 		else
-		session[:alert_message] = "Account couldn't be updated, make sure to fill up the username and the password"
-		redirect to("/users/#{@user.id}")
+			session[:alert_message] = "Account couldn't be updated, make sure to fill up the username and the password"
+			redirect to("/users/#{@user.id}")
 		end
-	else
-		session[:alert_message] = "You must be logged in to modify your information"
-		redirect to("/")
-	end
 end
 
 #delete "/users/:id/delete": delete the user
 delete "/users/:id/delete" do
+	redirect_wrong_user
 	@user = User.find(params[:id])
-	if right_user?
-		@user.destroy
-		redirect to("/")
-	else
-		session[:alert_message] = "You must be logged in to delete this information"
-		redirect to("/")
-	end
+	@user.destroy
+	redirect to("/")
 end
 
 end
