@@ -82,6 +82,9 @@ end
       @current_user ||= User.find_by(id: session[:user_id])
     end
 
+  def right_user?
+    logged_in? && current_user.id.to_s === params[:id]
+  end
 
 end
 
