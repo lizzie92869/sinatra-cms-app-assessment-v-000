@@ -12,8 +12,11 @@
    <link href="<%= url('/style.css') %>" rel="stylesheet" type="text/css" />
    <link href="https://fonts.googleapis.com/css?family=Covered+By+Your+Grace" rel="stylesheet">
   </head>
+
+ <!--  overwritte the appearence of links to make them less 101 and more smurfy -->
   <body link="#333333" vlink="#333333" alink="#1AC5FB">
   
+  <!-- customization of the flash messages directly in html because it doesn't work in css. Also sinatra flash and rake flash weren't working so creating those was the only solution -->
   <% if @success_message %>
     <div style="background-color: #8AC221; height: 40px;font-size: 1em; font-family: arial; text-align: center; color: white; display: table-cell; vertical-align: middle; opacity: 0.8; width: 1280px">
     <%= @success_message %>
