@@ -9,9 +9,13 @@ Once signup the user doesn't need to signin until he intentionally logs out.
 
 With the correct image rights this application could be added to a bigger website having for theme the smurfs or their author, Peyo. 
 
-#Where to read more about it:
-http://codingtalesbylizzie.com/my_smurf_project
 --------------------------------------------------------------------
+
+Where to read more about it:
+http://codingtalesbylizzie.com/my_smurf_project
+
+--------------------------------------------------------------------
+
 database:
 
 female avatars
